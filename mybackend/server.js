@@ -54,6 +54,15 @@ app.get('/getProducts', function(request, response){
    response.send(rows)
  });
 });
+app.get('/getProduct', function(req, res){
+  console.log(req.query)
+  let query = `SELECT * FROM products WHERE products.name LIKE '${req.query.name}%'`;
+
+  sql.query(connString, query, (err, rows) => {
+   console.log(rows);
+   res.send(rows)
+ });
+});
 app.get('/getCustomers', function(request, response){
    let query = "SELECT * FROM customers";
 
