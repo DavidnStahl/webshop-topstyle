@@ -26,7 +26,6 @@ app.post('/addCustomer', function(req, res){
      console.log("customer added")
   });
 });
-
 app.post('/addOrder', function(req, res){   
   console.log(JSON.parse(req.body))
   let result = JSON.parse(req.body)
@@ -38,14 +37,14 @@ app.post('/addOrder', function(req, res){
   sql.query(connString, query, (err, rows) => {
    let orderID = rows[0].orderID + 1
    result.produktID.forEach(produkt => {
-    sqlCode = "INSERT INTO orders_products (orderID, productID) values('" + orderID + "','" + produkt + "')";
+     console.log(produkt)
+    sqlCode = "INSERT INTO orders_products (orderID, produktID) values('" + orderID + "','" + produkt + "')";
     res.send()
     sql.query(connString, sqlCode, function(err,response){
        });    
      });  
   });  
 });
-
 app.get('/getProducts', function(request, response){
   let query = "SELECT * FROM products";
 
