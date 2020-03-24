@@ -4,8 +4,7 @@ export const SearchContext = createContext();
 
 
 const SearchContextProvider = (props) => {
-    const [Products , setProducts] = useState("hej");
-    
+    const [Products , setProducts] = useState([]);
         return (
             <SearchContext.Provider value={[Products,setProducts]}>
               {props.children}
