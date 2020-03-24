@@ -1,12 +1,11 @@
 import React from 'react'
 import SearchForProducts from './SearchForProduct'
-import SearchContextProvider from '../Context/SearchContext'
+import ProductInfo from './ProductInfo';
 
-const Register = () => {
-    return (
-    <SearchContextProvider>
-    <SearchForProducts/>
-    </SearchContextProvider>)
+const Search = () => {
+    return (<React.Fragment>
+            <SearchForProducts/>
+            <ProductInfo/>
+           </React.Fragment>)
 }
-
-export default Register
+export default Search
