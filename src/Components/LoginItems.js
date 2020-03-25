@@ -23,7 +23,6 @@ const LoginItems = () => {
       <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" ref={password}/>
       <button className="fadeIn fourth btn btn-primary" onClick={() => CheckLogin(username.current.value,password.current.value)}>Log in</button>
     
-
   </div>
 </div>
 

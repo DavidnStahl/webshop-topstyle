@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
-  },
+    "start": "node index.js",
+    "build": "webpack"},
   "keywords": [],
   "author": "",
   "license": "ISC",
