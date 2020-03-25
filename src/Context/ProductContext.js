@@ -8,25 +8,28 @@ const ProductContextProvider = (props) => {
         return <ProductList/>
     });
 
+
   const setCustomerBasket = (item) => {
       console.log(item.produktID)
-   let storage = localStorage.getItem("customerbasket")
+   let storage = JSON.parse(localStorage.getItem("customerbasket"))
+   
    if(storage=== null || storage.length === 0){
-    let arr = []
+    let arr = [];
+    console.log(item.price)
     let totalprice = item.price;
     localStorage.setItem("totalprice",totalprice)
     arr.push(item)
     localStorage.setItem("customerbasket",JSON.stringify(arr))
    }else {
-     let parseditem =  JSON.parse(storage);
+    storage.push(item);
+    localStorage.setItem("customerbasket",JSON.stringify(storage))
      let totalprice = 0;
-     parseditem.forEach(element => {
+     storage.forEach(element => {
+       console.log("runda")
          totalprice += element.price
      });
      localStorage.setItem("totalprice",totalprice)
-     parseditem.push(item)
-    localStorage.setItem("customerbasket",JSON.stringify(parseditem))
-    console.log(parseditem)
+    console.log(storage)
    }
    
   }   

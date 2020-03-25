@@ -11,16 +11,21 @@ const CustomerBasketItems = () => {
   useEffect(() =>{
     if(JSON.parse(localStorage.getItem("customerbasket")) === null || JSON.parse(localStorage.getItem("customerbasket")).length === 0){
       setBasket([{
-        name: "empty!!"
+        name: "Empty!!"
       }])
     }else{
       setBasket(JSON.parse(localStorage.getItem("customerbasket")))
+      setOrderStatus("")
     }
     
-  },[setBasket])
+  },[setBasket],[setOrderStatus])
+
+  useEffect(() =>{
+
+  },[setOrderStatus])
+
 
   const removeItemFromCustomerBasket = (id) =>{
-
     console.log(id)
     let newBasket = Basket.filter(item => Basket.indexOf(item) !== id)
     localStorage.setItem("customerbasket",JSON.stringify(newBasket))
@@ -42,13 +47,13 @@ const CustomerBasketItems = () => {
           <img src="https://www.vippng.com/png/detail/159-1591420_order-online-icon-clique.png" id="icon" alt="User Icon" />
             </div>
         
-            
+            <span>{OrderStatus}</span><br/>
             {Basket.map((item,index) =>{
-
-              return (<React.Fragment><span>{item.name}</span> <button onClick={() => removeItemFromCustomerBasket(index)}>Delete</button><br/></React.Fragment>)
+             if(item.name === "Empty!!") {return <span></span>}
+              return (<React.Fragment><span>{item.name}</span> <button className="btn btn-danger" onClick={() => removeItemFromCustomerBasket(index)}>Delete</button><br/></React.Fragment>)
             })}<br/>
             <span>Total: {localStorage.getItem("totalprice")} kr</span><br/>
-              <button className="fadeIn fourth btn btn-primary" onClick={SendOrder}></button>
+              <button className="fadeIn fourth btn btn-warning" onClick={SendOrder}>Order</button><br/>
             
         
           </div>

@@ -1,10 +1,11 @@
 import React, {createContext,useState} from 'react';
-
+import {useHistory} from 'react-router'
 export const OrderContext = createContext();
 
 
 const OrderContextProvider = (props) => {
-    const [OrderStatus,setOrderStatus] = useState([]);      
+    const [OrderStatus,setOrderStatus] = useState("");
+    let history = useHistory();     
     const SendOrder = () => {
         let order = JSON.parse(localStorage.getItem("customerbasket"));
         let payment = localStorage.getItem("totalprice");
@@ -12,7 +13,8 @@ const OrderContextProvider = (props) => {
         let produktIDArray = order.map((item) =>{
             return item.produktID
         })
-        fetch("http://localhost:8080/addOrder", {
+        if(order.length !== 0){
+          fetch("http://localhost:8080/addOrder", {
             mode: 'cors',
             method: 'POST',
             header : {
@@ -23,8 +25,19 @@ const OrderContextProvider = (props) => {
               totalpayment: payment,
               produktID: produktIDArray})
               
-        });
-        console.log("Ordersend")                
+           });
+           console.log("Ordersend")
+
+           localStorage.removeItem("customerbasket")
+           localStorage.removeItem("totalprice")
+           setOrderStatus("")
+           history.push('/') 
+        }else{
+          setOrderStatus("No items to order")
+          console.log("no order")
+        }
+        
+                       
     }
      return (
           <OrderContext.Provider value={[OrderStatus,setOrderStatus,SendOrder]}>

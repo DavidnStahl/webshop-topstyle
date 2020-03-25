@@ -10,12 +10,12 @@ const Logout = () => {
    const Logout = () =>{
        setLogin("Login")
        setPassword(undefined);
-       /*let x = document.getElementById("Search")
-            x.hidden = true;
-            let y = document.getElementById("CustomerBasket")
-            y.hidden = true
+       let searchnav = document.getElementById("Search")
+            searchnav.hidden = true;
+            let customerbasketnav = document.getElementById("CustomerBasket")
+            customerbasketnav.hidden = true
             let registernav = document.getElementById("Register")
-            registernav.hidden = false;*/
+            registernav.hidden = false;
        history.push('/Login');
    }
     return (<React.Fragment>
