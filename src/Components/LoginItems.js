@@ -20,7 +20,7 @@ const LoginItems = () => {
 
        <span>{IsLoginSucced}</span><br/><br/>
       <input type="text" id="login" className="fadeIn second" name="login" placeholder="username" ref={username} />
-      <input type="text" id="password" className="fadeIn third" name="login" placeholder="password" ref={password}/>
+      <input type="password" id="password" className="fadeIn third" name="login" placeholder="password" ref={password}/>
       <button className="fadeIn fourth btn btn-primary" onClick={() => CheckLogin(username.current.value,password.current.value)}>Log in</button>
     
 
