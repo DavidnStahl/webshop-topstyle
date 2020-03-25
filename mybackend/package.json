@@ -1,7 +1,6 @@
 {
   "name": "mybackend",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
@@ -15,5 +14,7 @@
     "mongoose": "^5.9.5",
     "msnodesqlv8": "^0.8.12",
     "nodemon": "^2.0.2"
-  }
+  },
+  "devDependencies": {},
+  "description": ""
 }
